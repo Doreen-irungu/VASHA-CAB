@@ -1,427 +1,299 @@
-# VASHA-CAB
-Vasha Cab is an Uber-style ride-sharing app built exclusively for electric vehicles. This repo contains the complete React Native frontend — from splash screen to live tracking — designed for the African market with M-Pesa payment UI, CO₂ impact tracking, and a clean green design system.
 # ⚡ Vasha Cab
-## Premium Electric Vehicle Ride-Sharing Platform
+### Premium Electric Vehicle Ride-Sharing App
 
-**Version:** 1.0.0  
-**Status:** Production-Ready MVP  
-**Platform:** React Native (iOS & Android)
+> *Zero Emissions · Pure Luxury · Built with React Native & Expo*
 
 ---
 
-## 🎯 Overview
+## 📱 Overview
 
-EVRide is a modern, Uber-like ride-sharing platform exclusively for electric vehicles. Every ride is **zero-emission**, **transparent**, and **environmentally tracked**.
-
-### Why Vasha Cab?
-
-✅ **Zero Emissions** - Every ride in an electric vehicle
-✅ **Transparent Pricing** - No surge pricing during peak hours
-✅ **Environmental Impact** - Track your CO₂ savings per ride
-✅ **Premium Experience** - Uber-quality platform
-✅ **Affordable** - Lower costs than traditional taxis
-✅ **Reliable** - 3-5 minute pickup guarantee
+Vasha Cab is a modern, Uber-style ride-sharing mobile app built exclusively for **electric vehicles**. Every ride is zero-emission, transparently priced, and environmentally tracked. The app is currently a **fully functional frontend prototype** — all screens, navigation, animations, and UI are complete and ready for backend integration.
 
 ---
 
-## 🎨 Key Features
+## 🎨 Screenshots & Screens
 
-### 1. **Smart Booking**
-- Pickup & dropoff location input
-- Choose from 3 EV vehicle types
-- Instant fare estimation
-- One-tap booking
+| Screen | Description |
+|---|---|
+| **1. Splash Screen** | Animated ⚡ logo, app name, loading dots — auto navigates after 3s |
+| **2. Authentication** | Login, Register, Forgot Password with full form validation |
+| **3. Home** | Pickup/destination inputs, map, vehicle cards, fare estimate, CO₂ saved |
+| **4. Vehicle Selection** | Eco / Premium / Comfort XL cards with battery, range, price breakdown |
+| **5. Live Tracking** | Animated driver marker, ETA countdown, SOS button, share ride |
+| **6. Ride History** | Past trips with price, distance, duration, CO₂ saved, receipt modal |
+| **7. Profile** | Photo, name, payment methods, achievements, settings, environmental impact |
 
-### 2. **Vehicle Transparency**
-- Real-time battery level display
-- Available range (km remaining)
-- Charging status
-- Vehicle make, model, color
-- License plate
+---
 
-### 3. **Real-Time Tracking**
-- Live driver location (GPS)
-- Dynamic ETA
-- Distance to destination
-- Battery consumption tracking
-- Energy mode display
+## 🗂️ Project Structure
 
-### 4. **Environmental Dashboard**
-- CO₂ saved per ride (kg)
-- Equivalent trees planted
-- Lifetime environmental impact
-- Comparison vs gas vehicles
-- Carbon footprint achievements
-
-### 5. **Ride History**
-- Past rides with full details
-- Driver ratings and reviews
-- Fare breakdown
-- Distance and duration
-- CO₂ saved per ride
-- Receipt download
-
-### 6. **User Profile**
-- Account settings
-- Payment methods
-- Ride statistics
-- Environmental stats (gamified)
-- Safety features
-- 24/7 customer support
+```
+VashaCab/
+├── App.tsx                          ← App entry point
+├── app.json                         ← Expo configuration
+├── package.json                     ← Dependencies
+├── tsconfig.json                    ← TypeScript config
+├── babel.config.js                  ← Babel config
+│
+└── src/
+    ├── screens/
+    │   ├── SplashScreen.tsx         ← Screen 1
+    │   ├── AuthScreen.tsx           ← Screen 2
+    │   ├── HomeScreen.tsx           ← Screen 3
+    │   ├── VehicleSelectionScreen.tsx ← Screen 4
+    │   ├── LiveTrackingScreen.tsx   ← Screen 5
+    │   ├── RideHistoryScreen.tsx    ← Screen 6
+    │   └── ProfileScreen.tsx        ← Screen 7
+    │
+    ├── navigation/
+    │   ├── RootNavigator.tsx        ← Stack navigator (all screens)
+    │   └── BottomTabNavigator.tsx   ← Bottom tab (Home, History, Profile)
+    │
+    ├── components/
+    │   ├── VehicleCard.tsx          ← Reusable: name, battery%, range, price
+    │   ├── DriverCard.tsx           ← Reusable: photo, name, rating, plate number
+    │   ├── AppButton.tsx            ← Reusable: primary, outline, ghost, danger
+    │   └── AppInput.tsx             ← Reusable: text input with validation
+    │
+    └── utilities/
+        ├── theme.ts                 ← Colors, fonts, spacing, shadows
+        ├── types.ts                 ← TypeScript interfaces & nav param lists
+        └── mockData.ts              ← Fake data (vehicles, driver, history, user)
+```
 
 ---
 
 ## 🚀 Technology Stack
 
-### Frontend
-- **React Native** - Cross-platform mobile development
-- **Expo** - Streamlined development & deployment
-- **React Navigation** - Tab and stack navigation
-- **Linear Gradient** - Beautiful gradient backgrounds
-
-### Design System
-- **Color Palette** - Green for eco-focus, modern UI
-- **Typography** - Clean, professional sans-serif
-- **Components** - Reusable, production-ready
-- **Responsive** - Works on all phone sizes
-
-### Backend (Ready for Integration)
-- **Node.js/Express** - RESTful API
-- **PostgreSQL + PostGIS** - Geolocation & driver matching
-- **Socket.io** - Real-time GPS tracking
-- **JWT Authentication** - Secure sessions
-- **M-Pesa Integration** - Payment processing
+| Technology | Purpose |
+|---|---|
+| **React Native** | Cross-platform mobile development (iOS & Android) |
+| **Expo SDK 51** | Streamlined build, preview and deployment |
+| **TypeScript** | Type safety across all components |
+| **React Navigation v6** | Stack + Bottom Tab navigation |
+| **Expo Linear Gradient** | Gradient backgrounds and UI elements |
+| **Expo Vector Icons** | Icon library |
+| **React Native Maps** | Map integration (ready for Google Maps API) |
+| **React Native Safe Area** | Safe area handling for all devices |
 
 ---
 
-## 📱 Screenshots & Flows
+## 🧩 Reusable Components
 
-### User Journey
-```
-Splash Screen
-    ↓
-Home Screen (Book a ride)
-    ↓
-Select EV Vehicle
-    ↓
-Confirm Booking
-    ↓
-Driver Matching
-    ↓
-Live Tracking
-    ↓
-Arrive & Pay
-    ↓
-Rate Driver
-    ↓
-See Environmental Impact
-```
+### `VehicleCard`
+Displays an EV vehicle option with:
+- Vehicle type (Eco / Premium / Comfort XL)
+- Battery percentage with colour-coded bar (green/yellow/red)
+- Range in km
+- Price per km + base fare
+- Estimated fare for current trip
+- Selected state with green border highlight
 
-### Screen Details
+### `DriverCard`
+Displays an assigned driver with:
+- Avatar / initials placeholder
+- Name, star rating, total rides
+- License plate number
+- Call and message action buttons
+- Online status dot
 
-**Home Screen**
-- Animated splash with EVRide branding
-- Location inputs (pickup/dropoff)
-- 3 EV vehicle options with pricing
-- Estimated fare display
-- Daily environmental impact stats
+### `AppButton`
+Four variants:
+- `primary` — green gradient, main actions
+- `outline` — transparent with green border
+- `ghost` — text only
+- `danger` — red, destructive actions
 
-**Booking Screen**
-- Driver information card
-- Vehicle details (battery, range)
-- Trip summary
-- Real-time updates
-- Call/message driver
-
-**Tracking Screen**
-- Live map with driver location
-- Driver profile & rating
-- Vehicle status (battery %)
-- ETA countdown
-- Energy consumption mode
-
-**Ride History**
-- All past rides
-- Driver names & ratings
-- CO₂ saved per trip
-- Fare breakdown
-- Environmental impact
-
-**Profile Screen**
-- User account management
-- Lifetime stats (45 rides, 4.9★)
-- Environmental achievements
-- 187.5 kg CO₂ saved = 12 trees
-- Payment & settings
+### `AppInput`
+Text input with:
+- Label, placeholder, left icon
+- Inline error messages
+- Password show/hide toggle
+- Focus highlight state
 
 ---
 
-## 💡 Unique Selling Points
+## 🎨 Design System
 
-### vs Traditional Uber
-| Feature | Vasha Cab | Uber |
-|---------|--------|------|
-| **Emissions** | Zero | High CO₂ |
-| **Vehicle Transparency** | Battery & Range | Hidden |
-| **Environmental Impact** | Tracked & Gamified | None |
-| **Eco Focus** | Primary Feature | Not Featured |
-| **Brand Alignment** | Green, sustainable | Generic |
+### Colour Palette
+| Name | Hex | Usage |
+|---|---|---|
+| Primary | `#1DB954` | Buttons, accents, active states |
+| Primary Dark | `#0D3B2E` | Splash background, headers |
+| Primary Mid | `#145A38` | Gradient midpoint |
+| Accent | `#00E676` | Electric green highlights |
+| Accent Red | `#FF3B30` | SOS button, alerts |
+| Accent Yellow | `#FFD600` | Battery warning indicator |
+| White | `#FFFFFF` | Cards, backgrounds |
+| Off White | `#F7FAF8` | Screen backgrounds |
 
-### Why Customers Choose Vasha Cab
-1. **Save the Planet** - Real environmental impact
-2. **Better for City Air** - Reduce pollution
-3. **Modern Experience** - Like Uber, but better
-4. **Transparency** - Know your driver's vehicle
-5. **Premium Feel** - Clean, reliable, professional
-6. **Community** - Join the green movement
-
----
-
-## 🎯 Target Market
-
-### Primary Users
-- **Eco-Conscious Professionals** (25-45 years)
-- **University Students** (18-25 years)
-- **Corporate Employees** (Sustainability-focused companies)
-- **Tourists** (Visiting green-focused cities)
-
-### Geographies (Phase 1)
-- Nairobi, Kenya
-- Lagos, Nigeria
-- Cape Town, South Africa
-- Later: Cairo, Johannesburg, Accra
+### Typography
+- Font sizes from `xs (11)` to `hero (38)`
+- All weights from regular to black (900)
+- Letter spacing applied to labels and titles
 
 ---
 
-## 📊 Business Model
-
-### Revenue Streams
-1. **Per-Ride Commission** - 20-25% per transaction
-2. **Premium Subscription** - $9.99/month (unlimited 10% discount)
-3. **Corporate Accounts** - Bulk ride packages for companies
-4. **B2B Fleet Management** - Partner with car rental companies
-5. **Advertising** - Eco-friendly brand partnerships
-
-### Unit Economics
-- **Average Ride Value**: KES 3,500
-- **Commission (20%)**: KES 700
-- **Server/Payment Costs**: KES 150
-- **Net Per Ride**: KES 550 (~€4)
-
-### Profitability Path
-- Day 1-30: 100 rides/day = KES 55,000 revenue
-- Month 2-3: 500 rides/day = KES 275,000 revenue
-- Month 4+: 2,000 rides/day = KES 1.1M revenue
-
----
-
-## 🔒 Safety & Compliance
-
-### Driver Vetting
-- Background checks (criminal history)
-- License verification
-- Vehicle inspection
-- Insurance confirmation
-- Customer rating system
-
-### Passenger Safety
-- Emergency button (calls police)
-- Share trip with friends/family
-- Driver photos & vehicle details
-- Real-time location sharing
-- In-app support chat
-
-### Environmental Certification
-- All vehicles EV-certified
-- Battery health verified
-- Range accuracy guaranteed
-- Emissions tracking (third-party verified)
-
----
-
-## 📈 Growth Strategy
-
-### Phase 1: MVP (Weeks 1-4)
-- Launch in 1 city
-- 50 EVs, 500+ drivers
-- 10,000+ users
-- $50-100K revenue
-
-### Phase 2: Scaling (Months 2-3)
-- Expand to 3 cities
-- 200 EVs, 2,000+ drivers
-- 100,000+ users
-- $500K-1M monthly revenue
-
-### Phase 3: Regional Leader (Months 4-6)
-- 5 cities across region
-- 1,000+ EVs, 10,000+ drivers
-- 500,000+ users
-- $5M+ annual revenue
-
-### Phase 4: International (Year 2+)
-- Expand to 20+ cities
-- Other African countries
-- Potential European expansion
-
----
-
-## 💰 Funding & Investment
-
-### Seed Round: €50,000
-- MVP polish & marketing
-- 1 city launch team
-- Initial 50 EVs partnership
-
-### Series A: €500,000
-- 5-city expansion
-- 500+ EVs
-- Advanced marketing
-- Strategic hires
-
-### Series B: €2,000,000
-- 20+ city presence
-- Regional dominance
-- Technology expansion
-- International preparation
-
----
-
-## 🏆 Competitive Advantages
-
-1. **First-Mover** - EV-exclusive ride-sharing (Africa)
-2. **Environmental Focus** - Real impact tracking
-3. **Transparent** - Show battery, range, efficiency
-4. **Scalable Tech** - Works in any city
-5. **Partnership Ready** - Fleet companies eager to participate
-6. **Regulatory Tailwind** - Governments incentivize EVs
-7. **Investor Appeal** - Green tech + mobility + Africa
-
----
-
-## 📋 Implementation Timeline
+## 📲 User Journey
 
 ```
-Week 1: MVP approval & final polish
-Week 2: Driver recruitment begins
-Week 3: Beta testing with closed group
-Week 4: Public launch
-Week 5-6: Scale to 500+ daily rides
-Week 7-8: Prepare for Series A
+Open App
+    ↓
+Splash Screen (3 seconds, animated)
+    ↓
+Authentication (Login / Register / Forgot Password)
+    ↓
+Home Screen (Enter pickup + destination)
+    ↓
+Vehicle Selection (Choose Eco / Premium / Comfort XL)
+    ↓
+Live Tracking (Watch driver arrive in real time)
+    ↓
+Ride Complete → Rate Driver
+    ↓
+Ride History (View past trips + CO₂ impact)
+    ↓
+Profile (Stats, achievements, settings)
 ```
 
 ---
 
-## 🤝 Partnership Opportunities
+## ⚙️ Getting Started
 
-### Fleet Partners
-- Hertz EV fleet
-- Sixt sustainability program
-- Tesla partnerships
-- Nissan Leaf leasing
+### Prerequisites
+- Node.js installed → [nodejs.org](https://nodejs.org)
+- Expo Go app on your phone → available on Play Store / App Store
 
-### Corporate Partners
-- Eco-focused companies
-- Carbon offset programs
-- Sustainability consulting
-- ESG reporting partners
+### Installation
 
-### Tech Partners
-- Google Maps (routing)
-- Stripe (payments)
-- Twilio (communications)
-- Sentry (monitoring)
+**1. Navigate to the project folder:**
+```bash
+cd C:\Users\BEST\Desktop\doreen\VashaCab
+```
 
----
+**2. Install dependencies:**
+```bash
+npm install --legacy-peer-deps
+```
 
-## ⚖️ Regulatory Compliance
+**3. Start the development server:**
+```bash
+npx expo start
+```
 
-### Required Licenses
-- ✅ Ride-sharing license (per city)
-- ✅ Business registration
-- ✅ Insurance (third-party liability)
-- ✅ Data protection (GDPR, local)
+**4. Scan the QR code** with Expo Go on your phone.
 
-### Environmental Certifications
-- ✅ Carbon neutral operations
-- ✅ Green business certification
-- ✅ EV vehicle standards compliance
+> ⚠️ Your phone and computer must be on the same WiFi network.
 
 ---
 
-## 📞 Contact & Support
+## 🌍 Deployment Options
 
-**Email:** hello@evride.com
-**Phone:** +254 712 345 678
-**Website:** www.evride.com
-**Support:** 24/7 in-app chat
+### Option 1 — Expo Share Link (phone preview)
+```bash
+npx expo login
+npx expo publish
+```
+Generates a shareable `exp.host/@yourname/vasha-cab` link.
+
+### Option 2 — Web App (browser link)
+```bash
+npx expo export --platform web
+```
+Upload the `dist` folder to [vercel.com](https://vercel.com) for a free live URL.
+
+### Option 3 — Android APK (install on phone)
+```bash
+npm install -g eas-cli
+eas login
+eas build --platform android --profile preview
+```
+
+### Option 4 — Google Play Store (public launch)
+```bash
+eas build --platform android --profile production
+eas submit --platform android
+```
+Requires a one-time $25 Google Play developer fee.
+
+---
+
+## 🔌 Backend Integration (Phase 2)
+
+The app is frontend-only. All data is currently mocked. To make it fully functional, the following backend services need to be connected:
+
+| Feature | Technology Needed |
+|---|---|
+| User authentication | Node.js + JWT + PostgreSQL |
+| Real-time driver tracking | Socket.io + GPS |
+| Maps & routing | Google Maps API |
+| Driver matching algorithm | Node.js + PostGIS |
+| Payment processing | M-Pesa Daraja API / Stripe |
+| Push notifications | Expo Notifications + Firebase |
+| Ride history storage | PostgreSQL database |
+
+---
+
+## 🚗 Vehicle Types
+
+| Type | Emoji | Base Fare | Per km | Range | Best For |
+|---|---|---|---|---|---|
+| Eco | 🟢 | KES 150 | KES 28 | 320 km | Daily commutes |
+| Premium | ⚡ | KES 250 | KES 45 | 480 km | Business travel |
+| Comfort XL | 🔋 | KES 300 | KES 55 | 290 km | Groups, luggage |
+
+---
+
+## 🏆 Achievements System
+
+| Achievement | Requirement | Status |
+|---|---|---|
+| 🌱 First Green Ride | Take your first EV ride | Unlocked |
+| 🌿 Eco Warrior | Complete 10 rides | Unlocked |
+| 🌳 Tree Planter | Save 50 kg CO₂ | Unlocked |
+| ⚡ Speed Saver | 25 rides in one month | Unlocked |
+| 🏆 Champion Rider | 100 total rides | Locked |
+| 🌍 Climate Hero | Save 500 kg CO₂ | Locked |
+
+---
+
+## 🔒 Safety Features
+
+- **SOS Button** — visible on live tracking screen, triggers emergency alert
+- **Share Ride** — send live trip link to friends or family
+- **Driver Verification** — plate number and photo shown before every ride
+- **Rating System** — passengers rate drivers after every trip
+
+---
+
+## 📊 Mock Data
+
+All data is defined in `src/utilities/mockData.ts`:
+
+- **3 vehicles** — Eco, Premium, Comfort XL with realistic specs
+- **1 mock driver** — James Mwangi, 4.9★, 1,243 rides, Tesla Model 3
+- **5 ride history entries** — completed and cancelled trips
+- **1 user profile** — Doreen Wanjiku, 45 rides, 187.5 kg CO₂ saved
 
 ---
 
 ## 📄 License
 
-MIT License - Free to modify for non-commercial use.
+MIT License — free to use and modify.
 
 ---
 
-## 👥 Team
+## 👤 Author
 
-- **Founder & CEO** - Sustainable mobility expert
-- **CTO** - Full-stack developer (React Native, Node.js)
-- **Head of Operations** - Ride-sharing background
-- **Environmental Officer** - Carbon tracking & reporting
-
----
-
-## 🎁 What's Included in This Package
-
-✅ **Production-Ready Frontend** - React Native, 1,600 LOC
-✅ **UI Design System** - Uber-quality, EV-focused
-✅ **Deployment Guide** - Vercel, Expo, TestFlight ready
-✅ **Feature Documentation** - Everything explained
-✅ **Business Model** - Revenue projections included
-✅ **Technical Architecture** - Backend-ready
-✅ **Investor Pitch** - Use for fundraising
+Built by **Doreen Wanjiku**
+- App: Vasha Cab
+- Email: doreen@vashacab.com
+- Version: 1.0.0
 
 ---
 
-## 🚀 Quick Start
+## 🌿 Vision
 
-### For Investors
-1. Download this package
-2. Open `evride-deployment-guide.md`
-3. Follow "Deploy to Vercel" for instant demo
-4. Share link: `https://evride.vercel.app`
+*"Vasha Cab is building the future of sustainable urban mobility — one electric ride at a time."*
 
-### For Developers
-1. Clone the repository
-2. Run `npm install`
-3. Run `npm start`
-4. Scan QR code with Expo Go
-5. Test on your phone in 30 seconds
-
-### For Partners
-1. Review this README
-2. Schedule demo call
-3. Discuss partnership opportunities
-4. Sign partnership agreement
-
----
-
-## ✨ Vision
-
-**Vasha Cab is building the future of sustainable urban mobility.**
-
-In 5 years:
-- 50,000+ daily rides
-- 0 kg CO₂ emissions
-- 10M+ users across Africa
-- Market leader in EV ride-sharing
-
-**Join us in making cities cleaner, greener, and more sustainable.** ⚡🌍
-
----
-
-**Ready to revolutionize transportation? Let's go!** 🚗⚡
-
-*Vasha Cab - Where sustainability meets luxury.*
+**Every ride saves the planet. ⚡🌍**
